@@ -60,14 +60,12 @@ function new()
 					gameOver = display.newImage("gameover.png", 150, 400)
 					gameOver.scene = "gameover"
 					
-							function changeScene(e)
- 								if(e.phase == "ended") then
- 								director:changeScene(e.target.scene)
- 								gameOver:removeSelf()	
- 								end
-							end
+					function onGameOverTouch(e)
+						gameOver:removeSelf()	
+ 						main:changeScene(e)
+					end
 
-					gameOver:addEventListener("touch", changeScene)
+					gameOver:addEventListener("touch", onGameOverTouch)
 						
 				end
 			end
